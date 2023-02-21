@@ -1,0 +1,27 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: product-service
+
+  sleuth:
+    sampler:
+      probability: 1.0
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/product-service
+#      host: localhost
+#      port: 27017
+#      username: root
+#      password: 123456
+#      database: product
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${EUREKA_USERNAME:eureka}:${EUREKA_PASSWORD:password}@localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${random.value}
